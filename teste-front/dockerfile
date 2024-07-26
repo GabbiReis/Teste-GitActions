@@ -1,0 +1,27 @@
+FROM node:17 AS build
+
+RUN mkdir teste-front
+
+WORKDIR /teste-front
+
+COPY package.json . 
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+FROM node:17 AS prod
+
+RUN npm install -g http-server
+
+WORKDIR /teste-front
+
+RUN rm -rf node_modules
+
+COPY --from=build /teste-front/dist /teste-front
+
+EXPOSE 3000
+
+CMD ["http-server", "-p", "3000"]

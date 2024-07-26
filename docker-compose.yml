@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  back:
+    build:
+      context: ./teste-back
+      dockerfile: dockerfile
+    ports:
+      - "8080:8080"
+
+
+  front:
+    build:
+      context: ./teste-front
+      dockerfile: dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back
+
+
+
