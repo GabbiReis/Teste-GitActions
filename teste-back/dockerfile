@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-alpine
 
-COPY *.jar teste-back.jar
+COPY teste-back-0.0.1-SNAPSHOT.jar teste-back.jar
 
 EXPOSE 8080
 

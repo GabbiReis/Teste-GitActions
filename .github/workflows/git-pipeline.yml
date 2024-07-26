@@ -24,11 +24,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-buildx-
 
-    # - name: Build image docker
-    #   run: docker-compose build
+    - name: Build image docker
+      run: docker-compose build
 
     - name: Run Docker Compose
-      run: docker-compose up --build
+      run: docker-compose up -d
 
     - name: Install npm
       working-directory: ./teste-front
